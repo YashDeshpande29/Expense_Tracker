@@ -4,12 +4,16 @@ import { GlobalStyle } from './styles/GlobalStyles'; // Adjust the path as neede
 import { MainLayout } from './styles/Layouts';
 import Navigation from './components/Navigation/Navigation.jsx';
 import Dashboard from './components/Dashboard/Dashboard.jsx'
-import Incomes from "./components/incomes/Incomes.jsx";
+
 import Expenses from "./components/Expenses/Expenses.jsx";
+import { useGlobalContext } from './context/GlobalContext.jsx';
+import Income from './components/incomes/Incomes.jsx';
 
 
 function App() {
   const [active,setActive]=useState(1);
+  const global=useGlobalContext()
+  console.log(global)
   const displayData=()=>{
     switch(active){
       case 1:
@@ -17,7 +21,7 @@ function App() {
       case 2:
         return <Dashboard/>
       case 3:
-        return <Incomes/>
+        return <Income/>
       case 4:
         return <Expenses/>
       default:<Dashboard/>
