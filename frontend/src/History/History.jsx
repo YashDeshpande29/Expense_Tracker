@@ -10,35 +10,31 @@ function History() {
     return (
         <HistoryStyled>
             <h2>Recent History</h2>
-            {history.map((item) =>{
-                const {_id, title, amount, type} = item
+            {history.map((item) => {
+                const { _id, title, amount, type } = item;
                 return (
                     <div key={_id} className="history-item">
-                        <p style={{
-                            color: type === 'expense' ? 'red' : 'var(--color-green)'
-                        }}>
+                        <p style={{ color: type === 'income' ? 'green' :'red'  }}>
                             {title}
                         </p>
-
-                        <p style={{
-                            color: type === 'expense' ? 'red' : 'var(--color-green)'
-                        }}>
-                            {
-                                type === 'expense' ? `-${amount <= 0 ? 0 : amount}` : `+${amount <= 0 ? 0: amount}`
-                            }
+                        <p style={{ color: type === 'income' ? 'green' : 'red' }}>
+                       
+                       
+                            {type === 'income' ? `+${amount <= 0 ? 0 : amount}` : `-${amount <= 0 ? 0 : amount}`}
                         </p>
                     </div>
-                )
+                );
             })}
         </HistoryStyled>
-    )
+    );
 }
 
 const HistoryStyled = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    .history-item{
+
+    .history-item {
         background: #FCF6F9;
         border: 2px solid #FFFFFF;
         box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
@@ -50,4 +46,4 @@ const HistoryStyled = styled.div`
     }
 `;
 
-export default History
+export default History;
